@@ -1,30 +1,40 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <v-app>
+    <v-main>
+      <Dashboard />
+      <!-- <div class="main-header">
+            <router-link style="text-decoration: none" :to="{ path: '/'}">
+                        <h1>Products List</h1>
+            </router-link>
+             <router-link style="text-decoration: none" to='/permissions'>
+                        <h1> Permissions</h1>
+            </router-link>
+        </div>-->
+      <router-view/> 
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { Options,Vue } from 'vue-class-component'
+import ProductList from "./components/ProductList.vue"
+import Dashboard from './components/Dashboard.vue'
 
-#nav {
-  padding: 30px;
+@Options({
+  components:{
+    Dashboard,
+  }
+})
+export default class App extends Vue{
+  public title="hello world"
 }
+</script>
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+<style scoped>
+.main-header{
+    height: 80px;
+    background-color:cadetblue;
+    display: flex;
+    justify-content: space-around;
 }
 </style>
